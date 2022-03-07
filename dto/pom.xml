@@ -12,12 +12,9 @@
     </parent>
 
     <artifactId>person-dto</artifactId>
+    <packaging>jar</packaging>
 
     <dependencies>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
         <dependency>
             <groupId>liga.medical</groupId>
             <artifactId>common-dto</artifactId>

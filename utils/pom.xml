@@ -20,10 +20,6 @@
             <artifactId>common-utils</artifactId>
         </dependency>
         <dependency>
-            <groupId>liga.medical</groupId>
-            <artifactId>monitoring-dto</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.modelmapper</groupId>
             <artifactId>modelmapper</artifactId>
         </dependency>

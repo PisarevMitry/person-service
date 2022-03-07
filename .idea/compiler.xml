@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="person-dto" />
+        <module name="person-core" />
+        <module name="person-core-api" />
+        <module name="person-utils" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="dependency-manager-bom" target="11" />
+      <module name="migration" target="11" />
+      <module name="person-core" target="11" />
+      <module name="person-core-api" target="11" />
+      <module name="person-dto" target="11" />
+      <module name="person-service" target="11" />
+      <module name="person-utils" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

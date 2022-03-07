@@ -12,5 +12,6 @@
     </parent>
 
     <artifactId>migration</artifactId>
+    <packaging>pom</packaging>
 
 </project>

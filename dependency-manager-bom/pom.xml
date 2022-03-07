@@ -11,6 +11,7 @@
     </parent>
 
     <artifactId>dependency-manager-bom</artifactId>
+    <packaging>pom</packaging>
 
     <dependencyManagement>
         <dependencies>
@@ -49,17 +50,7 @@
             </dependency>
             <dependency>
                 <groupId>liga.medical</groupId>
-                <artifactId>common-services</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>liga.medical</groupId>
                 <artifactId>common-utils</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>liga.medical</groupId>
-                <artifactId>monitoring-core-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -68,35 +59,14 @@
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>liga.medical</groupId>
-                <artifactId>monitoring-utils</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>liga.medical</groupId>
-                <artifactId>monitoring-core</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
                 <groupId>org.mybatis</groupId>
                 <artifactId>mybatis</artifactId>
                 <version>${mybatis.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.google.guava</groupId>
-                <artifactId>guava</artifactId>
-                <version>${guava.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>org.modelmapper</groupId>
                 <artifactId>modelmapper</artifactId>
                 <version>${model.mapper.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>javax.validation</groupId>
-                <artifactId>validation-api</artifactId>
-                <version>${validation-api.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
