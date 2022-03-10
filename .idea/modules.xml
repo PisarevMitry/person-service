@@ -7,7 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/core/person-core.iml" filepath="$PROJECT_DIR$/core/person-core.iml" />
       <module fileurl="file://$PROJECT_DIR$/core-api/person-core-api.iml" filepath="$PROJECT_DIR$/core-api/person-core-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/dto/person-dto.iml" filepath="$PROJECT_DIR$/dto/person-dto.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/person-service.iml" filepath="$PROJECT_DIR$/.idea/person-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/person-service.iml" filepath="$PROJECT_DIR$/person-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/utils/person-utils.iml" filepath="$PROJECT_DIR$/utils/person-utils.iml" />
     </modules>
   </component>
