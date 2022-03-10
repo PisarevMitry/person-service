@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class InformationFromDevicesDto {
 
-	private Long id;
+    private Long id;
 
-	private String information;
+    private String information;
 
 }

@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class UserNotificationDto {
 
-	private Long id;
+    private Long id;
 
-	private String notification;
+    private String notification;
 
 }
