@@ -13,6 +13,7 @@
     </parent>
 
     <artifactId>person-utils</artifactId>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
