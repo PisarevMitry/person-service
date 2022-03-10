@@ -22,6 +22,5 @@
     <orderEntry type="library" name="Maven: liga.medical:common-dto:0.0.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.projectlombok:lombok:1.18.12" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate:hibernate-core:${hibernate.version}" level="project" />
-    <orderEntry type="library" name="Maven: javax.persistence:javax.persistence-api:2.2" level="project" />
   </component>
 </module>
