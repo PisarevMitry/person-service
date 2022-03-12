@@ -10,7 +10,7 @@
         <version>0.0.1</version>
     </parent>
 
-    <artifactId>dependency-manager-bom</artifactId>
+    <artifactId>dependency-management-bom</artifactId>
     <packaging>pom</packaging>
 
     <dependencyManagement>

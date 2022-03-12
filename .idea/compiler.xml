@@ -15,7 +15,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="dependency-manager-bom" target="11" />
+      <module name="dependency-management-bom" target="11" />
       <module name="migration" target="11" />
       <module name="person-core" target="11" />
       <module name="person-core-api" target="11" />

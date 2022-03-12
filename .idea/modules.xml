@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/dependency-manager-bom/dependency-manager-bom.iml" filepath="$PROJECT_DIR$/dependency-manager-bom/dependency-manager-bom.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dependency-management-bom/dependency-management-bom.iml" filepath="$PROJECT_DIR$/dependency-management-bom/dependency-management-bom.iml" />
       <module fileurl="file://$PROJECT_DIR$/migration/migration.iml" filepath="$PROJECT_DIR$/migration/migration.iml" />
       <module fileurl="file://$PROJECT_DIR$/core/person-core.iml" filepath="$PROJECT_DIR$/core/person-core.iml" />
       <module fileurl="file://$PROJECT_DIR$/core-api/person-core-api.iml" filepath="$PROJECT_DIR$/core-api/person-core-api.iml" />
