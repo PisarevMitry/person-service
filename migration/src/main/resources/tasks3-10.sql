@@ -32,7 +32,6 @@ FROM person_data AS person
 WHERE med_status IS NULL;
 
 /*Представление данных о болезнях пользоватлей*/
-
 CREATE VIEW full_contact
 AS
 (
@@ -41,3 +40,16 @@ FROM address
          INNER JOIN contact ON address.contact_id = contact.id
     );
 
+/*Хранимая процедура поиска всех болезней пользователя по индентификатору*/
+CREATE PROCEDURE get_illnesses_of_person(IN person_id integer, INOUT id integer)
+    LANGUAGE SQL
+AS
+$$
+SELECT illness.id AS id
+FROM illness
+WHERE illness.medical_card_id IN (SELECT person_data.medical_card_id
+                                  FROM person_data
+                                  WHERE person_data.id = person_id)
+$$;
+
+call get_illnesses_of_person(17, NULL);
