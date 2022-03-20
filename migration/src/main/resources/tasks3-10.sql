@@ -41,7 +41,7 @@ FROM address
     );
 
 /*Поиск всех болезней пользователя по индентификатору пользователя*/
-CREATE PROCEDURE get_illnesses_of_person(IN person_id integer, INOUT id integer)
+CREATE PROCEDURE get_medical_history(IN person_id integer)
     LANGUAGE plpgsql
 AS
 $$
@@ -54,10 +54,10 @@ begin
 end;
 $$;
 
-call get_illnesses_of_person(17, NULL);
+call get_medical_history(17, NULL);
 
 /*Изменение возраста на основе даты рождения*/
-CREATE PROCEDURE update_age_of_people()
+CREATE PROCEDURE update_age()
     LANGUAGE plpgsql
 AS
 $$
@@ -69,7 +69,8 @@ begin
 end;
 $$;
 
-CREATE FUNCTION update_age_of_person()
+/*Триггер пересчета возраста*/
+CREATE FUNCTION update_age()
     RETURNS trigger AS
 $$
 begin
