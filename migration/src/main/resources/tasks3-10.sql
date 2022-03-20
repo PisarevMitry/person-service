@@ -50,7 +50,7 @@ begin
     FROM illness
     WHERE illness.medical_card_id IN (SELECT person_data.medical_card_id
                                       FROM person_data
-                                      WHERE person_data.id = person_id)
+                                      WHERE person_data.id = person_id);
 end;
 $$;
 
