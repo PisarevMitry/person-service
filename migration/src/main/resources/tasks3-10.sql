@@ -40,16 +40,49 @@ FROM address
          INNER JOIN contact ON address.contact_id = contact.id
     );
 
-/*Хранимая процедура поиска всех болезней пользователя по индентификатору*/
+/*Поиск всех болезней пользователя по индентификатору пользователя*/
 CREATE PROCEDURE get_illnesses_of_person(IN person_id integer, INOUT id integer)
-    LANGUAGE SQL
+    LANGUAGE plpgsql
 AS
 $$
-SELECT illness.id AS id
-FROM illness
-WHERE illness.medical_card_id IN (SELECT person_data.medical_card_id
-                                  FROM person_data
-                                  WHERE person_data.id = person_id)
+begin
+    SELECT illness.id AS id
+    FROM illness
+    WHERE illness.medical_card_id IN (SELECT person_data.medical_card_id
+                                      FROM person_data
+                                      WHERE person_data.id = person_id)
+end;
 $$;
 
 call get_illnesses_of_person(17, NULL);
+
+/*Изменение возраста на основе даты рождения*/
+CREATE PROCEDURE update_age_of_people()
+    LANGUAGE plpgsql
+AS
+$$
+begin
+    UPDATE person_data
+    SET age=age(birth_dt::DATE)
+    WHERE age > 0;
+    commit;
+end;
+$$;
+
+CREATE FUNCTION update_age_of_person()
+    LANGUAGE plpgsql
+AS
+$$
+begin
+    UPDATE person_data
+    SET age=age(birth_dt::DATE)
+    where id = (select max(id) from person_data);
+    commit;
+end;
+$$;
+
+CREATE TRIGGER insert_person_data_trigger
+    AFTER INSERT
+    ON person_data
+    FOR EACH ROW
+EXECUTE PROCEDURE update_age_of_person();
