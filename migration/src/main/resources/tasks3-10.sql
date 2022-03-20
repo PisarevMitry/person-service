@@ -70,16 +70,16 @@ end;
 $$;
 
 CREATE FUNCTION update_age_of_person()
-    LANGUAGE plpgsql
-AS
+    RETURNS trigger AS
 $$
 begin
     UPDATE person_data
     SET age=age(birth_dt::DATE)
     where id = (select max(id) from person_data);
-    commit;
+    return new;
 end;
-$$;
+
+$$ LANGUAGE plpgsql;
 
 CREATE TRIGGER insert_person_data_trigger
     AFTER INSERT
