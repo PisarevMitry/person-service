@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="liga.medical.personservice.core.repository.MedicalCardRepository">
+
+    <resultMap id="medicalEntity" type="liga.medical.personservice.core.model.MedicalCardEntity" autoMapping="true">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <select id="findByIds" resultMap="medicalEntity">
+        <bind name="" value=""/>
+        SELECT id, client_status, med_status, registry_dt, comment
+        FROM medical_card
+        <choose>
+            <when test="cardIds.isEmpty()">
+                ORDER BY recovery_dt DESC
+                LIMIT 10;
+            </when>
+            <otherwise>
+                WHERE id IN
+                <foreach collection='cardIds' item='id' open='(' separator=',' close=')'>
+                    #{id, jdbcType=BIGINT}
+                </foreach>
+            </otherwise>
+        </choose>
+    </select>
+
+    <insert id="insertAll" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        INSERT INTO medical_card (client_status, med_status, registry_dt, comment) VALUES
+        <foreach collection="cardList" item="card" separator=",">
+            (#{card.clientStatus, jdbcType=VARCHAR}, #{card.medStatus, jdbcType=VARCHAR},
+            #{card.registryDt, jdbcType=DATE}, #{card.comment, jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+
+    <update id="updateById" parameterType="liga.medical.personservice.core.model.MedicalCardEntity">
+        <if test="id != null">
+            UPDATE medical_card SET
+            <if test="registryDt != null">
+                registry_dt = #{registryDt},
+            </if>
+            <if test="comment != null">
+                comment = #{comment},
+            </if>
+            <if test="medStatus != null">
+                med_status = #{medStatus},
+            </if>
+            <if test="clientStatus != null">
+                client_status = #{clientStatus}
+            </if>
+            WHERE id = #{id};
+        </if>
+    </update>
+
+    <delete id="deleteById">
+        DELETE
+        FROM medical_card
+        WHERE case_id = #{cardId,jdbcType=BIGINT};
+    </delete>
+</mapper>
