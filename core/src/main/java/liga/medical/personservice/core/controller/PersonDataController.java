@@ -3,6 +3,7 @@ package liga.medical.personservice.core.controller;
 import liga.medical.personservice.core.model.PersonDataEntity;
 import liga.medical.personservice.core.repository.PersonDataRepository;
 import liga.medical.personservice.dto.PersonDataDto;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,26 +30,26 @@ public class PersonDataController {
     private ModelMapper modelMapper = new ModelMapper();
 
     @PostMapping("/save")
-    void saveNewPersonData(@RequestBody @Valid PersonDataDto personData) {
-        PersonDataEntity personDataEntity = modelMapper.map(personData, PersonDataEntity.class);
-        personDataRepository.insert(cardEntity);
+    void saveNewPersonData(@RequestBody @Valid PersonDataDto personDataDTO) {
+        PersonDataEntity personDataEntity = modelMapper.map(personDataDTO, PersonDataEntity.class);
+        personDataRepository.insert(personDataEntity);
     }
 
     @PostMapping("/save-all")
-    void saveNewPersonData(@RequestBody @Valid List<PersonDataDto> personData) {
-        List<PersonDataEntity> personDataEntityList = personData.stream().map(el -> modelMapper.map(el, PersonDataEntity.class)).collect(Collectors.toList());
+    void saveNewPersonData(@RequestBody @Valid List<PersonDataDto> personDataDTO) {
+        List<PersonDataEntity> personDataEntityList = personDataDTO.stream().map(el -> modelMapper.map(el, PersonDataEntity.class)).collect(Collectors.toList());
         personDataRepository.insertAll(personDataEntityList);
     }
 
     @GetMapping("/{id}")
     PersonDataDto getPersonDataById(@PathVariable Long id) {
-        PersonDataEntity personData = personDataRepository.findById(id);
-        return modelMapper.map(personData, PersonDataDto.class);
+        PersonDataEntity personDataEntity = personDataRepository.findById(id);
+        return modelMapper.map(personDataEntity, PersonDataDto.class);
     }
 
     @GetMapping("")
-    List<PersonDataDto> getPersonDataByListId(@RequestParam List<Long> listId) {
-        List<PersonDataEntity> personData = personDataRepository.findByListId(listId);
-        return personData.stream().map(el -> modelMapper.map(el, PersonDataDto.class)).collect(Collectors.toList());
+    List<PersonDataDto> getPersonDataByListId(@RequestParam List<Long> id) {
+        List<PersonDataEntity> personDataEntity = personDataRepository.findByListId(id);
+        return personDataEntity.stream().map(el -> modelMapper.map(el, PersonDataDto.class)).collect(Collectors.toList());
     }
 }
