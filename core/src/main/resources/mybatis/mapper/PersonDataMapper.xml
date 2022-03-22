@@ -33,16 +33,32 @@
     </insert>
 
     <update id="updateById" parameterType="liga.medical.personservice.core.model.PersonDataEntity">
-        UPDATE person_data
-        SET last_name       = #{personData.lastName},
-            first_name      = #{personData.firstName},
-            birth_dt        = #{personData.birthDt},
-            age             = #{personData.age},
-            sex             = #{personData.sex},
-            contact_id      = #{personData.contactId},
-            medical_card_id = #{personData.medicalCardId},
-            parent_id       = #{personData.parentId}
-        WHERE id = #{personData.id};
+        UPDATE person_data SET
+        <if test="lastName != null">
+            last_name = #{lastName}
+        </if>
+        <if test="firstName != null">
+            first_name = #{firstName},
+        </if>
+        <if test="birthDt != null">
+            birth_dt = #{birthDt},
+        </if>
+        <if test="age != null">
+            age = #{age},
+        </if>
+        <if test="sex != null">
+            sex = #{sex}
+        </if>
+        <if test="contactId != null">
+            contact_id = #{contactId}
+        </if>
+        <if test="medicalCardId != null">
+            medical_card_id = #{medicalCardId}
+        </if>
+        <if test="parentId != null">
+            parent_id = #{parentId}
+        </if>
+        WHERE id = #{id};
     </update>
 
     <delete id="deleteById">

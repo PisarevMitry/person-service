@@ -30,13 +30,23 @@
     </insert>
 
     <update id="updateById" parameterType="liga.medical.personservice.core.model.IllnessEntity">
-        UPDATE illness
-        SET medical_card_id = #{illness.medicalCardId},
-            type_id         = #{illness.typeId},
-            heaviness       = #{illness.heaviness},
-            appearance_dttm = #{illness.appearanceDttm},
-            recovery_dt     = #{illness.recoveryDt}
-        WHERE id = #{illness.id};
+        UPDATE illness SET
+        <if test="medicalCardId != null">
+            medical_card_id = #{medicalCardId}
+        </if>
+        <if test="typeId != null">
+            type_id = #{typeId},
+        </if>
+        <if test="heaviness != null">
+            heaviness = #{heaviness},
+        </if>
+        <if test="appearanceDttm != null">
+            appearance_dttm = #{appearanceDttm},
+        </if>
+        <if test="recoveryDt != null">
+            recovery_dt = #{recoveryDt}
+        </if>
+        WHERE id = #{id};
     </update>
 
     <delete id="deleteById">
