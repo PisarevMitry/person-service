@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="liga.medical.personservice.core.repository.AddressRepository">
+
+    <resultMap id="addressEntity" type="liga.medical.personservice.core.model.AddressEntity" autoMapping="true">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <select id="findByListId" resultMap="addressEntity">
+        <bind name="" value=""/>
+        SELECT id, contact_id, country_id, city, index, street, building, flat
+        FROM address
+        <choose>
+            <otherwise>
+                WHERE id IN
+                <foreach collection='addressListId' item='id' open='(' separator=',' close=')'>
+                    #{id, jdbcType=BIGINT}
+                </foreach>
+            </otherwise>
+        </choose>
+    </select>
+
+    <insert id="insertAll" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        INSERT INTO address (contact_id, country_id, city, index, street, building, flat) VALUES
+        <foreach collection="addressList" item="address" separator=",">
+            (#{address.contactId}, #{address.countryId}, #{address.city},
+            #{address.index}, #{address.street}, #{address.building}, #{address.flat})
+        </foreach>
+    </insert>
+
+    <update id="updateById" parameterType="liga.medical.personservice.core.model.AddressEntity">
+        UPDATE address
+        SET contact_id = #{address.contactId},
+            country_id = #{address.countryId},
+            city       = #{address.city},
+            index      = #{address.index},
+            street     = #{address.street},
+            building   = #{address.building},
+            flat       = #{address.flat}
+        WHERE id = #{address.id};
+    </update>
+
+    <delete id="deleteById">
+        DELETE
+        FROM address
+        WHERE id = #{addressId};
+    </delete>
+</mapper>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="liga.medical.personservice.core.repository.PersonDataRepository">
+
+    <resultMap id="personDataEntity" type="liga.medical.personservice.core.model.PersonDataEntity" autoMapping="true">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <select id="findByListId" resultMap="personDataEntity">
+        <bind name="" value=""/>
+        SELECT id, last_name, first_name, birth_dt, age, sex, contact_id, medical_card_id
+        FROM person_data
+        <choose>
+            <otherwise>
+                WHERE id IN
+                <foreach collection='personDataListId' item='id' open='(' separator=',' close=')'>
+                    #{id, jdbcType=BIGINT}
+                </foreach>
+            </otherwise>
+        </choose>
+    </select>
+
+    <insert id="insertAll" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        INSERT INTO person_data(last_name, first_name, birth_dt, age, sex, contact_id, medical_card_id, parent_id)
+        VALUES
+        <foreach collection="personDataList" item="personData" separator=",">
+            (#{personData.lastName}, #{personData.firstName},
+            #{personData.birthDt},
+            #{personData.age}, #{personData.sex},
+            #{personData.contactId},
+            #{personData.medicalCardId}, #{personData.parentId})
+        </foreach>
+    </insert>
+
+    <update id="updateById" parameterType="liga.medical.personservice.core.model.PersonDataEntity">
+        UPDATE person_data
+        SET last_name       = #{personData.lastName},
+            first_name      = #{personData.firstName},
+            birth_dt        = #{personData.birthDt},
+            age             = #{personData.age},
+            sex             = #{personData.sex},
+            contact_id      = #{personData.contactId},
+            medical_card_id = #{personData.medicalCardId},
+            parent_id       = #{personData.parentId}
+        WHERE id = #{personData.id};
+    </update>
+
+    <delete id="deleteById">
+        DELETE
+        FROM person_data
+        WHERE id = #{personDataId, jdbcType=BIGINT};
+    </delete>
+</mapper>

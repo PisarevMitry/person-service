@@ -11,13 +11,9 @@
         SELECT id, client_status, med_status, registry_dt, comment
         FROM medical_card
         <choose>
-            <when test="medicalCardListId.isEmpty()">
-                ORDER BY registry_dt DESC
-                LIMIT 10;
-            </when>
             <otherwise>
                 WHERE id IN
-                <foreach collection='cardIds' item='id' open='(' separator=',' close=')'>
+                <foreach collection='medicalCardListId' item='id' open='(' separator=',' close=')'>
                     #{id, jdbcType=BIGINT}
                 </foreach>
             </otherwise>
@@ -26,7 +22,7 @@
 
     <insert id="insertAll" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
         INSERT INTO medical_card (client_status, med_status, registry_dt, comment) VALUES
-        <foreach collection="cardList" item="card" separator=",">
+        <foreach collection="medicalCardListId" item="medicalCard" separator=",">
             (#{card.clientStatus, jdbcType=VARCHAR}, #{card.medStatus, jdbcType=VARCHAR},
             #{card.registryDt, jdbcType=DATE}, #{card.comment, jdbcType=VARCHAR})
         </foreach>
