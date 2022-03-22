@@ -26,7 +26,7 @@ public class MedicalCardController {
     private MedicalCardRepository medicalCardRepository;
 
     @Autowired
-    private ModelMapper modelMapper = new ModelMapper();
+    private ModelMapper modelMapper;
 
     @PostMapping("/save")
     void saveNewMedicalCard(@RequestBody @Valid MedicalCardDto medicalCardDTO) {

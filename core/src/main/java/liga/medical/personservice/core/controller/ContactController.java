@@ -27,7 +27,7 @@ public class ContactController {
     private ContactRepository contactRepository;
 
     @Autowired
-    private ModelMapper modelMapper = new ModelMapper();
+    private ModelMapper modelMapper;
 
     @PostMapping("/save")
     void saveNewContact(@RequestBody @Valid ContactDto contactDTO) {

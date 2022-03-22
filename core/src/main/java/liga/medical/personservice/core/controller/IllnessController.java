@@ -27,7 +27,7 @@ public class IllnessController {
     private IllnessRepository illnessRepository;
 
     @Autowired
-    private ModelMapper modelMapper = new ModelMapper();
+    private ModelMapper modelMapper;
 
     @PostMapping("/save")
     void saveNewIllness(@RequestBody @Valid IllnessDto illnessDTO) {

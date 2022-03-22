@@ -27,7 +27,7 @@ public class PersonDataController {
     private PersonDataRepository personDataRepository;
 
     @Autowired
-    private ModelMapper modelMapper = new ModelMapper();
+    private ModelMapper modelMapper;
 
     @PostMapping("/save")
     void saveNewPersonData(@RequestBody @Valid PersonDataDto personDataDTO) {

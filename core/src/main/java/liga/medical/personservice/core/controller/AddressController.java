@@ -27,7 +27,7 @@ public class AddressController {
     private AddressRepository addressRepository;
 
     @Autowired
-    private ModelMapper modelMapper = new ModelMapper();
+    private ModelMapper modelMapper;
 
     @PostMapping("/save")
     void saveNewAddress(@RequestBody @Valid AddressDto addressDTO) {
