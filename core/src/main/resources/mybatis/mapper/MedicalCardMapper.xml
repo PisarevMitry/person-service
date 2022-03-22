@@ -6,13 +6,13 @@
         <id property="id" column="id" jdbcType="BIGINT"/>
     </resultMap>
 
-    <select id="findByIds" resultMap="medicalEntity">
+    <select id="findByListId" resultMap="medicalEntity">
         <bind name="" value=""/>
         SELECT id, client_status, med_status, registry_dt, comment
         FROM medical_card
         <choose>
-            <when test="cardIds.isEmpty()">
-                ORDER BY recovery_dt DESC
+            <when test="medicalCardListId.isEmpty()">
+                ORDER BY registry_dt DESC
                 LIMIT 10;
             </when>
             <otherwise>
@@ -54,6 +54,6 @@
     <delete id="deleteById">
         DELETE
         FROM medical_card
-        WHERE case_id = #{cardId,jdbcType=BIGINT};
+        WHERE id = #{medicalCardId,jdbcType=BIGINT};
     </delete>
 </mapper>
