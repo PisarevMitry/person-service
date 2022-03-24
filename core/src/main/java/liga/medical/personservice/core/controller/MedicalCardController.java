@@ -2,6 +2,7 @@ package liga.medical.personservice.core.controller;
 
 import liga.medical.personservice.core.model.MedicalCardEntity;
 import liga.medical.personservice.core.repository.MedicalCardRepository;
+import liga.medical.personservice.dto.MedicalCardDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;

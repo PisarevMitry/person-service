@@ -29,11 +29,17 @@
     </insert>
 
     <update id="updateById" parameterType="liga.medical.personservice.core.model.ContactEntity">
-        UPDATE contact
-        SET phone_number = #{contact.phoneNumber},
-            email        = #{contact.email},
-            profile_link = #{contact.profileLink}
-        WHERE id = #{contact.id};
+        UPDATE illness SET
+        <if test="medicalCardId != null">
+            phone_number = #{phoneNumber}
+        </if>
+        <if test="typeId != null">
+            email = #{email},
+        </if>
+        <if test="heaviness != null">
+            profile_link = #{profileLink},
+        </if>
+        WHERE id = #{id};
     </update>
 
     <delete id="deleteById">

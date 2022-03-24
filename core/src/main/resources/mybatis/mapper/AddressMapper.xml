@@ -29,15 +29,29 @@
     </insert>
 
     <update id="updateById" parameterType="liga.medical.personservice.core.model.AddressEntity">
-        UPDATE address
-        SET contact_id = #{address.contactId},
-            country_id = #{address.countryId},
-            city       = #{address.city},
-            index      = #{address.index},
-            street     = #{address.street},
-            building   = #{address.building},
-            flat       = #{address.flat}
-        WHERE id = #{address.id};
+        UPDATE address SET
+        <if test="medicalCardId != null">
+            contact_id = #{contactId}
+        </if>
+        <if test="typeId != null">
+            country_id = #{countryId},
+        </if>
+        <if test="heaviness != null">
+            city = #{city},
+        </if>
+        <if test="heaviness != null">
+            index = #{index},
+        </if>
+        <if test="heaviness != null">
+            street = #{street},
+        </if>
+        <if test="heaviness != null">
+            building = #{building},
+        </if>
+        <if test="heaviness != null">
+            flat = #{flat},
+        </if>
+        WHERE id = #{id};
     </update>
 
     <delete id="deleteById">
