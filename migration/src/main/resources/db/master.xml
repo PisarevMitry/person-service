@@ -6,9 +6,9 @@
 
     <!-- <includeAll path="src/main/resources/liquibase/changelogs"/> -->
     <include
-            file="../../../../../../../liga.medical/person-service/migration/src/main/resources/db/changelog/start-0.0.1.xml"
+            file="/changelog/start-0.0.1.xml"
             relativeToChangelogFile="true"/>
     <include
-            file="../../../../../../../liga.medical/person-service/migration/src/main/resources/db/changelog/start-0.0.2.xml"
+            file="/changelog/start-0.0.2.xml"
             relativeToChangelogFile="true"/>
 </databaseChangeLog>
