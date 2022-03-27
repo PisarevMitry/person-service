@@ -38,8 +38,14 @@ public class AddressController {
         return addressService.findById(id);
     }
 
-    @GetMapping("")
-    List<AddressDto> getAddressByListId(@RequestParam List<Long> id) {
-        return addressService.findByListId(id);
+    @GetMapping("/sort")
+    List<AddressDto> getAddressByListId(@RequestParam List<Long> listId) {
+        return addressService.findByListId(listId);
     }
+
+    @GetMapping("")
+    List<AddressDto> getAllAddress() {
+        return addressService.findAll();
+    }
+
 }

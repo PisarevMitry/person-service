@@ -14,11 +14,13 @@ import java.util.stream.Collectors;
 @Service
 public class AddressServiceImpl implements AddressService {
 
-    @Autowired
-    AddressRepository repository;
+    final AddressRepository repository;
 
-    @Autowired
-    private ModelMapper modelMapper;
+    private final ModelMapper modelMapper;
+
+    public AddressServiceImpl(AddressRepository repository, ModelMapper modelMapper) {this.repository = repository;
+        this.modelMapper = modelMapper;
+    }
 
     @Override
     public List<AddressDto> findAll() {

@@ -14,11 +14,13 @@ import java.util.stream.Collectors;
 @Service
 public class ContactServiceImpl implements ContactService {
 
-    @Autowired
-    ContactRepository repository;
+    final ContactRepository repository;
 
-    @Autowired
-    private ModelMapper modelMapper;
+    private final ModelMapper modelMapper;
+
+    public ContactServiceImpl(ContactRepository repository, ModelMapper modelMapper) {this.repository = repository;
+        this.modelMapper = modelMapper;
+    }
 
     @Override
     public List<ContactDto> findAll() {

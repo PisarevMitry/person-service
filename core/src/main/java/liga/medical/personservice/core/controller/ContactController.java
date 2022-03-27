@@ -38,8 +38,13 @@ public class ContactController {
         return contactService.findById(id);
     }
 
-    @GetMapping("")
+    @GetMapping("/sort")
     List<ContactDto> getContactByListId(@RequestParam List<Long> listId) {
         return contactService.findByListId(listId);
+    }
+
+    @GetMapping("")
+    List<ContactDto> getAllContact() {
+        return contactService.findAll();
     }
 }

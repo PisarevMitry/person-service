@@ -14,11 +14,13 @@ import java.util.stream.Collectors;
 @Service
 public class IllnessServiceImpl implements IllnessService {
 
-    @Autowired
-    IllnessRepository repository;
+    final IllnessRepository repository;
 
-    @Autowired
-    private ModelMapper modelMapper;
+    private final ModelMapper modelMapper;
+
+    public IllnessServiceImpl(IllnessRepository repository, ModelMapper modelMapper) {this.repository = repository;
+        this.modelMapper = modelMapper;
+    }
 
     @Override
     public List<IllnessDto> findAll() {

@@ -1,6 +1,7 @@
 package liga.medical.personservice.core.controller;
 
 import liga.medical.personservice.core.service.IllnessService;
+import liga.medical.personservice.dto.ContactDto;
 import liga.medical.personservice.dto.IllnessDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -38,8 +39,13 @@ public class IllnessController {
         return illnessService.findById(id);
     }
 
-    @GetMapping("")
+    @GetMapping("/sort")
     List<IllnessDto> getIllnessByListId(@RequestParam List<Long> listId) {
         return illnessService.findByListId(listId);
+    }
+
+    @GetMapping("")
+    List<IllnessDto> getAllIllness() {
+        return illnessService.findAll();
     }
 }

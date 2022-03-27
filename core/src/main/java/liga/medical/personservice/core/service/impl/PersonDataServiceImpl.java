@@ -14,11 +14,14 @@ import java.util.stream.Collectors;
 @Service
 public class PersonDataServiceImpl implements PersonDataService {
 
-    @Autowired
-    PersonDataRepository repository;
+    final PersonDataRepository repository;
 
-    @Autowired
-    private ModelMapper modelMapper;
+    private final ModelMapper modelMapper;
+
+    public PersonDataServiceImpl(PersonDataRepository repository, ModelMapper modelMapper) {
+        this.repository = repository;
+        this.modelMapper = modelMapper;
+    }
 
     @Override
     public List<PersonDataDto> findAll() {

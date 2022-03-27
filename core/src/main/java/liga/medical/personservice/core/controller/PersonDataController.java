@@ -38,8 +38,13 @@ public class PersonDataController {
         return personDataService.findById(id);
     }
 
-    @GetMapping("")
+    @GetMapping("/sort")
     List<PersonDataDto> getPersonDataByListId(@RequestParam List<Long> id) {
         return personDataService.findByListId(id);
+    }
+
+    @GetMapping("")
+    List<PersonDataDto> getAllPersonData() {
+        return personDataService.findAll();
     }
 }

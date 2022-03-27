@@ -14,11 +14,14 @@ import java.util.stream.Collectors;
 @Service
 public class MedicalCardServiceImpl implements MedicalCardService {
 
-    @Autowired
-    MedicalCardRepository repository;
+    final MedicalCardRepository repository;
 
-    @Autowired
-    private ModelMapper modelMapper;
+    private final ModelMapper modelMapper;
+
+    public MedicalCardServiceImpl(MedicalCardRepository repository, ModelMapper modelMapper) {
+        this.repository = repository;
+        this.modelMapper = modelMapper;
+    }
 
     @Override
     public List<MedicalCardDto> findAll() {
