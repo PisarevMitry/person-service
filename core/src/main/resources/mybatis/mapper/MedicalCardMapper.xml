@@ -11,6 +11,10 @@
         SELECT id, client_status, med_status, registry_dt, comment
         FROM medical_card
         <choose>
+            <when test="medicalCardListId.isEmpty()">
+                ORDER BY id DESC
+                LIMIT 10;
+            </when>
             <otherwise>
                 WHERE id IN
                 <foreach collection='medicalCardListId' item='id' open='(' separator=',' close=')'>

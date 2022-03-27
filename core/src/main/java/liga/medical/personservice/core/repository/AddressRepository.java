@@ -13,17 +13,16 @@ import java.util.List;
 public interface AddressRepository {
 
     @Select("select * from address")
-    AddressEntity findAll();
+    List<AddressEntity> findAll();
 
     @Select("select * from address where id = #{addressId}")
     AddressEntity findById(Long addressId);
 
-    @Insert("insert into address (contact_id, country_id, city, index, street, building, flat)" +
-            "values (#{contactId}, #{countryId}, #{city}, #{index}, #{street}, #{building}, #{flat})")
+    List<AddressEntity> findByListId(@Param("addressListId") List<Long> addressListId);
+
+    @Insert("insert into address (contact_id, country_id, city, index, street, building, flat)" + "values (#{contactId}, #{countryId}, #{city}, #{index}, #{street}, #{building}, #{flat})")
     @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
     int insert(AddressEntity addressEntity);
-
-    List<AddressEntity> findByListId(@Param("addressListId") List<Long> addressListId);
 
     int insertAll(@Param("addressList") List<AddressEntity> addressEntityList);
 

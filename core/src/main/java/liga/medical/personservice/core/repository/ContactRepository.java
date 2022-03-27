@@ -13,7 +13,7 @@ import java.util.List;
 public interface ContactRepository {
 
     @Select("select * from contact")
-    ContactEntity findAll();
+    List<ContactEntity> findAll();
 
     @Select("select * from contact where id = #{contactId}")
     ContactEntity findById(Long contactId);

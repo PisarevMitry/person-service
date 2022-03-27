@@ -1,9 +1,7 @@
 package liga.medical.personservice.core.controller;
 
-import liga.medical.personservice.core.model.AddressEntity;
-import liga.medical.personservice.core.repository.AddressRepository;
+import liga.medical.personservice.core.service.AddressService;
 import liga.medical.personservice.dto.AddressDto;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Validated
 @RestController
@@ -24,32 +21,25 @@ import java.util.stream.Collectors;
 public class AddressController {
 
     @Autowired
-    private AddressRepository addressRepository;
-
-    @Autowired
-    private ModelMapper modelMapper;
+    private AddressService addressService;
 
     @PostMapping("/save")
     void saveNewAddress(@RequestBody @Valid AddressDto addressDTO) {
-        AddressEntity addressEntity = modelMapper.map(addressDTO, AddressEntity.class);
-        addressRepository.insert(addressEntity);
+        addressService.insert(addressDTO);
     }
 
     @PostMapping("/save-all")
-    void saveNewAddress(@RequestBody @Valid List<AddressDto> addressDTO) {
-        List<AddressEntity> addressEntityList = addressDTO.stream().map(el -> modelMapper.map(el, AddressEntity.class)).collect(Collectors.toList());
-        addressRepository.insertAll(addressEntityList);
+    void saveNewAddress(@RequestBody @Valid List<AddressDto> addressListDTO) {
+        addressService.insertAll(addressListDTO);
     }
 
     @GetMapping("/{id}")
     AddressDto getAddressById(@PathVariable Long id) {
-        AddressEntity addressEntity = addressRepository.findById(id);
-        return modelMapper.map(addressEntity, AddressDto.class);
+        return addressService.findById(id);
     }
 
     @GetMapping("")
     List<AddressDto> getAddressByListId(@RequestParam List<Long> id) {
-        List<AddressEntity> addressEntity = addressRepository.findByListId(id);
-        return addressEntity.stream().map(el -> modelMapper.map(el, AddressDto.class)).collect(Collectors.toList());
+        return addressService.findByListId(id);
     }
 }

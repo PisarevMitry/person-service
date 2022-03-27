@@ -13,7 +13,7 @@ import java.util.List;
 public interface IllnessRepository {
 
     @Select("select * from illness")
-    IllnessEntity findAll();
+    List<IllnessEntity> findAll();
 
     @Select("select * from illness where id = #{illnessId}")
     IllnessEntity findById(Long illnessId);

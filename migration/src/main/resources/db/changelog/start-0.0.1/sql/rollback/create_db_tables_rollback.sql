@@ -1,5 +1,11 @@
-drop table if exists person_data;
-drop table if exists address;
-drop table if exists illness;
-drop table if exists medical_card;
-drop table if exists contact;
+DROP TABLE IF EXISTS person_data CASCADE;
+DROP TABLE IF EXISTS address CASCADE;
+DROP TABLE IF EXISTS illness CASCADE;
+DROP TABLE IF EXISTS medical_card CASCADE;
+DROP TABLE IF EXISTS contact CASCADE;
+
+DROP SEQUENCE IF EXISTS person_data_seq;
+DROP SEQUENCE IF EXISTS address_seq;
+DROP SEQUENCE IF EXISTS illness_seq;
+DROP SEQUENCE IF EXISTS medical_card_seq;
+DROP SEQUENCE IF EXISTS contact_seq;

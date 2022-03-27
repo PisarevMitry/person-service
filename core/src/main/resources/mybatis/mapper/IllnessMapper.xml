@@ -11,6 +11,10 @@
         SELECT id, medical_card_id, type_id, heaviness, appearance_dttm, recovery_dt
         FROM illness
         <choose>
+            <when test="illnessListId.isEmpty()">
+                ORDER BY id DESC
+                LIMIT 10;
+            </when>
             <otherwise>
                 WHERE id IN
                 <foreach collection='illnessListId' item='id' open='(' separator=',' close=')'>

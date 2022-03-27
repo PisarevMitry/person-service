@@ -11,6 +11,10 @@
         SELECT id, phone_number, email, profile_link
         FROM contact
         <choose>
+            <when test="contactListId.isEmpty()">
+                ORDER BY id DESC
+                LIMIT 10;
+            </when>
             <otherwise>
                 WHERE id IN
                 <foreach collection='contactListId' item='id' open='(' separator=',' close=')'>
@@ -29,7 +33,7 @@
     </insert>
 
     <update id="updateById" parameterType="liga.medical.personservice.core.model.ContactEntity">
-        UPDATE illness SET
+        UPDATE contact SET
         <if test="medicalCardId != null">
             phone_number = #{phoneNumber}
         </if>

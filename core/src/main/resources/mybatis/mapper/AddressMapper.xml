@@ -11,6 +11,10 @@
         SELECT id, contact_id, country_id, city, index, street, building, flat
         FROM address
         <choose>
+            <when test="addressListId.isEmpty()">
+                ORDER BY id DESC
+                LIMIT 10;
+            </when>
             <otherwise>
                 WHERE id IN
                 <foreach collection='addressListId' item='id' open='(' separator=',' close=')'>

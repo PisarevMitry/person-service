@@ -11,6 +11,10 @@
         SELECT id, last_name, first_name, birth_dt, age, sex, contact_id, medical_card_id
         FROM person_data
         <choose>
+            <when test="personDataListId.isEmpty()">
+                ORDER BY id DESC
+                LIMIT 10;
+            </when>
             <otherwise>
                 WHERE id IN
                 <foreach collection='personDataListId' item='id' open='(' separator=',' close=')'>

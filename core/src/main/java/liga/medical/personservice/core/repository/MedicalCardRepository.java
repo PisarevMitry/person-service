@@ -13,7 +13,7 @@ import java.util.List;
 public interface MedicalCardRepository {
 
     @Select("select * from medical_card")
-    MedicalCardEntity findAll();
+    List<MedicalCardEntity> findAll();
 
     @Select("select * from medical_card where id = #{cardId}")
     MedicalCardEntity findById(Long medicalCardId);

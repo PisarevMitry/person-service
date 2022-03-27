@@ -1,8 +1,8 @@
-TRUNCATE TABLE person_data;
-TRUNCATE TABLE address;
-TRUNCATE TABLE illness;
-TRUNCATE TABLE medical_card;
-TRUNCATE TABLE contact;
+DELETE FROM person_data;
+DELETE FROM address;
+DELETE FROM illness;
+DELETE FROM medical_card;
+DELETE FROM contact;
 
 DROP SEQUENCE person_data_seq;
 DROP SEQUENCE address_seq;

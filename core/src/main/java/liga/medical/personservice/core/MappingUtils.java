@@ -1,4 +1,4 @@
-package liga.medical.personservice.core.model;
+package liga.medical.personservice.core;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
