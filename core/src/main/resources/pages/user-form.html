@@ -1,0 +1,47 @@
+<div class="card">
+    <div class="card-header">
+        Add new user
+    </div>
+
+    <div class="card-body">
+        <div class="row justify-content-center align-items-center">
+            <form>
+                <div class="form-group text-center font-weight-bold">
+                    <label for="firstName0" class="col-form-label-sm">First name
+                        <input class="form-control form-control-sm" type="text" id="firstName0"
+                               name="firstName" placeholder="First name" style="max-height: 28px">
+                    </label>
+                    <br>
+                    <label for="lastName0" class="col-form-label-sm">Last name
+                        <input class="form-control form-control-sm" type="text" id="lastName0"
+                               name="lastName" placeholder="Last name" style="max-height: 28px">
+                    </label>
+
+                    <br>
+                    <label for="email0" class="col-form-label-sm">Email
+                        <input class="form-control form-control-sm" type="text" id="email0" name="email"
+                               placeholder="Email" style="max-height: 28px">
+                    </label>
+                    <br>
+                    <label for="password0" class="col-form-label-sm">Password
+                        <input class="form-control form-control-sm" type="password" id="password0"
+                               name="password" placeholder="Password" style="max-height: 28px">
+                    </label>
+                    <br>
+                    <label for="roles0">Role
+                        <select class="form-control form-control-sm" size="2" name="addRoles"
+                                id="roles0" style="max-height: 42px" multiple>
+                            <option th:each="role : ${roles}"
+                                    th:value="${role.getId()}"
+                                    th:selected="${role.getName().equals('ROLE_USER')}"
+                                    th:text="${role.getName()}">
+                            </option>
+                        </select>
+                    </label>
+                    <br>
+                    <button type="button" class="btn btn-success" onclick="addUser()">Add new user</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -17,7 +17,7 @@ import java.util.List;
 
 @Validated
 @RestController
-@RequestMapping("/person-data")
+@RequestMapping("/user/person-data")
 public class PersonDataController {
 
     @Autowired

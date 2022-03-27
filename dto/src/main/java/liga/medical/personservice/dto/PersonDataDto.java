@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -33,4 +34,8 @@ public class PersonDataDto {
     private Long medicalCardId;
 
     private Long parentId;
+
+    private String email;
+
+    private String password;
 }

@@ -17,7 +17,7 @@ import java.util.List;
 
 @Validated
 @RestController
-@RequestMapping("/contact")
+@RequestMapping("/admin/contact")
 public class ContactController {
 
     @Autowired

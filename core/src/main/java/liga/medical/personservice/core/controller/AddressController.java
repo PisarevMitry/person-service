@@ -23,22 +23,22 @@ public class AddressController {
     @Autowired
     private AddressService addressService;
 
-    @PostMapping("/save")
+    @PostMapping("/admin/save")
     void saveNewAddress(@RequestBody @Valid AddressDto addressDTO) {
         addressService.insert(addressDTO);
     }
 
-    @PostMapping("/save-all")
+    @PostMapping("/admin/save-all")
     void saveNewAddress(@RequestBody @Valid List<AddressDto> addressListDTO) {
         addressService.insertAll(addressListDTO);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/user/{id}")
     AddressDto getAddressById(@PathVariable Long id) {
         return addressService.findById(id);
     }
 
-    @GetMapping("/sort")
+    @GetMapping("/admin/sort")
     List<AddressDto> getAddressByListId(@RequestParam List<Long> listId) {
         return addressService.findByListId(listId);
     }

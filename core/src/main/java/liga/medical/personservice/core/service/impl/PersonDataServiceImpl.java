@@ -6,21 +6,31 @@ import liga.medical.personservice.core.service.PersonDataService;
 import liga.medical.personservice.dto.PersonDataDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional
 public class PersonDataServiceImpl implements PersonDataService {
 
     final PersonDataRepository repository;
 
     private final ModelMapper modelMapper;
 
+    private PasswordEncoder passwordEncoder;
+
+
     public PersonDataServiceImpl(PersonDataRepository repository, ModelMapper modelMapper) {
         this.repository = repository;
         this.modelMapper = modelMapper;
+        this.passwordEncoder = new BCryptPasswordEncoder(10);
     }
 
     @Override
@@ -62,8 +72,23 @@ public class PersonDataServiceImpl implements PersonDataService {
             repository.updateById(personData);
     }
 
+    public void insertUser(PersonDataEntity personDataEntity) {
+        repository.insertUser(personDataEntity);
+    }
+
     @Override
     public void deleteById(Long id) {
         repository.deleteById(id);
     }
+
+    public PersonDataEntity findByEmail(String email) {
+        return repository.findByEmail(email);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        PersonDataEntity personData = findByEmail(email);
+        return personData;
+    }
+
 }
