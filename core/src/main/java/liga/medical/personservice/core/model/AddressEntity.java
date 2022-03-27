@@ -3,6 +3,7 @@ package liga.medical.personservice.core.model;
 import lombok.Data;
 
 @Data
+
 public class AddressEntity {
 
     private Long id;

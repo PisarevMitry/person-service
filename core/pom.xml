@@ -34,14 +34,6 @@
         </dependency>
         <dependency>
             <groupId>liga.medical</groupId>
-            <artifactId>person-service-core-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>liga.medical</groupId>
-            <artifactId>person-service-utils</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>liga.medical</groupId>
             <artifactId>person-service-dto</artifactId>
         </dependency>
     </dependencies>

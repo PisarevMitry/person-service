@@ -14,11 +14,4 @@
     <artifactId>person-service-core-api</artifactId>
     <packaging>jar</packaging>
 
-    <dependencies>
-        <dependency>
-            <groupId>liga.medical</groupId>
-            <artifactId>person-service-dto</artifactId>
-        </dependency>
-    </dependencies>
-
 </project>

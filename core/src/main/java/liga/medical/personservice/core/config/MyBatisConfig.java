@@ -2,7 +2,7 @@ package liga.medical.personservice.core.config;
 
 import com.zaxxer.hikari.HikariDataSource;
 import lombok.extern.slf4j.Slf4j;
-//import org.mybatis.spring.annotation.MapperScan;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.AdviceMode;
@@ -56,7 +56,8 @@ public class MyBatisConfig {
      */
     private DataSource getDataSource() {
 
-        log.info("Setting up datasource for {} environment.", env.getActiveProfiles());
+        //log.info("Setting up datasource for {} environment.",
+              //  env.getActiveProfiles());
 
         DataSource dataSource = DataSourceBuilder.create()
                 .url(env.getProperty("spring.datasource.url"))
