@@ -21,13 +21,4 @@
         <module>utils</module>
         <module>migration</module>
     </modules>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 </project>
