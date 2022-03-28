@@ -20,8 +20,8 @@ public class Init {
     @PostConstruct
     public void init() {
 
-        UserRole admin = UserRole.ADMIN;
-        UserRole user = UserRole.USER;
+        UserRole admin = UserRole.ROLE_ADMIN;
+        UserRole user = UserRole.ROLE_USER;
 
         Set<UserRole> allAccess = new HashSet<>();
         Set<UserRole> userAccess = new HashSet<>();

@@ -3,7 +3,7 @@ package liga.medical.personservice.core.model;
 import org.springframework.security.core.GrantedAuthority;
 
 public enum UserRole implements GrantedAuthority {
-    ADMIN, USER;
+    ROLE_ADMIN, ROLE_USER;
 
     @Override
     public String getAuthority() {
