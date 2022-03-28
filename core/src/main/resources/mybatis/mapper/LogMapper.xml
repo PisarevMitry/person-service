@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="liga.medical.personservice.core.repository.LogRepository">
+
+    <resultMap id="LogEntity" type="liga.medical.personservice.core.model.logging.LogEntity" autoMapping="true">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <select id="findAll" resultMap="LogEntity">
+        SELECT *
+        FROM log;
+    </select>
+
+    <select id="findById" resultMap="LogEntity">
+        SELECT *
+        FROM log
+        WHERE id = #{log.id, jdbcType=BIGINT};
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        INSERT INTO log (id, create_dttm, method_name, class_name, user_name)
+        VALUES (#{createDttm}, #{methodName}, #{className}, #{userName});
+    </insert>
+
+</mapper>
