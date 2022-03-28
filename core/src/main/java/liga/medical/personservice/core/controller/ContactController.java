@@ -33,7 +33,7 @@ public class ContactController {
         contactService.insertAll(contactListDTO);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     ContactDto getContactById(@PathVariable Long id) {
         return contactService.findById(id);
     }
@@ -43,7 +43,7 @@ public class ContactController {
         return contactService.findByListId(listId);
     }
 
-    @GetMapping("")
+    @GetMapping("/get")
     List<ContactDto> getAllContact() {
         return contactService.findAll();
     }

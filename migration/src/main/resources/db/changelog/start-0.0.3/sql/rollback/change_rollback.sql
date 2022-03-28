@@ -12,3 +12,20 @@ ALTER TABLE person_data
 
 ALTER TABLE person_data
     ALTER COLUMN medical_card_id SET NOT NULL;
+
+DELETE
+FROM person_data
+WHERE id = 1001;
+
+DELETE
+FROM person_data
+WHERE id = 1002;
+DELETE
+FROM person_data
+WHERE id = 1003;
+DELETE
+FROM person_data
+WHERE id = 1004;
+DELETE
+FROM person_data
+WHERE id = 1005;

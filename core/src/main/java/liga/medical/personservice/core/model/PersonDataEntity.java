@@ -35,8 +35,8 @@ public class PersonDataEntity implements UserDetails {
 
     private Set<UserRole> roles;
 
-
-    public PersonDataEntity(String lastName, String firstName, LocalDate birthDt, String email, String password) {
+    public PersonDataEntity(Long id, String lastName, String firstName, LocalDate birthDt, String email, String password) {
+        this.id = id;
         this.lastName = lastName;
         this.firstName = firstName;
         this.birthDt = birthDt;

@@ -17,33 +17,33 @@ import java.util.List;
 
 @Validated
 @RestController
-@RequestMapping("/address")
+@RequestMapping("admin/address")
 public class AddressController {
 
     @Autowired
     private AddressService addressService;
 
-    @PostMapping("/admin/save")
+    @PostMapping("/save")
     void saveNewAddress(@RequestBody @Valid AddressDto addressDTO) {
         addressService.insert(addressDTO);
     }
 
-    @PostMapping("/admin/save-all")
+    @PostMapping("/save-all")
     void saveNewAddress(@RequestBody @Valid List<AddressDto> addressListDTO) {
         addressService.insertAll(addressListDTO);
     }
 
-    @GetMapping("/user/{id}")
+    @GetMapping("/get/{id}")
     AddressDto getAddressById(@PathVariable Long id) {
         return addressService.findById(id);
     }
 
-    @GetMapping("/admin/sort")
+    @GetMapping("/sort")
     List<AddressDto> getAddressByListId(@RequestParam List<Long> listId) {
         return addressService.findByListId(listId);
     }
 
-    @GetMapping("")
+    @GetMapping("/get")
     List<AddressDto> getAllAddress() {
         return addressService.findAll();
     }

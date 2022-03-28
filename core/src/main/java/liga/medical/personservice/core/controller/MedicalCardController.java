@@ -18,7 +18,7 @@ import java.util.List;
 
 @Validated
 @RestController
-@RequestMapping("/medical-card")
+@RequestMapping("/admin/medical-card")
 public class MedicalCardController {
 
     @Autowired
@@ -34,7 +34,7 @@ public class MedicalCardController {
         medicalCardService.insertAll(medicalCardListDTO);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     MedicalCardDto getMedicalCardById(@PathVariable Long id) {
         return medicalCardService.findById(id);
     }
@@ -44,7 +44,7 @@ public class MedicalCardController {
         return medicalCardService.findByListId(listId);
     }
 
-    @GetMapping("")
+    @GetMapping("/get")
     List<MedicalCardDto> getAllMedicalCard() {
         return medicalCardService.findAll();
     }

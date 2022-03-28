@@ -33,7 +33,7 @@ public class PersonDataController {
         personDataService.insertAll(personDataListDTO);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     PersonDataDto getPersonDataById(@PathVariable Long id) {
         return personDataService.findById(id);
     }
@@ -43,7 +43,7 @@ public class PersonDataController {
         return personDataService.findByListId(id);
     }
 
-    @GetMapping("")
+    @GetMapping("/get")
     List<PersonDataDto> getAllPersonData() {
         return personDataService.findAll();
     }

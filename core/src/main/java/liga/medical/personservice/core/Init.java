@@ -31,11 +31,11 @@ public class Init {
 
         userAccess.add(user);
 
-        PersonDataEntity user1 = new PersonDataEntity("Pisarev", "Dmitrii", LocalDate.of(2003, 1, 1), "d.pisarev" + ".03@mail.ru", "1234");
-        PersonDataEntity user2 = new PersonDataEntity("Pisarev1", "Dmitrii", LocalDate.of(2003, 1, 1), "d1.pisarev" + ".03@mail.ru", "12");
-        PersonDataEntity user3 = new PersonDataEntity("Pisarev2", "Dmitrii", LocalDate.of(2003, 1, 1), "d2.pisarev" + ".03@mail.ru", "13");
-        PersonDataEntity user4 = new PersonDataEntity("Pisarev3", "Dmitrii", LocalDate.of(2003, 1, 1), "d3.pisarev" + ".03@mail.ru", "14");
-        PersonDataEntity user5 = new PersonDataEntity("Pisarev4", "Dmitrii", LocalDate.of(2003, 1, 1), "d4.pisarev" + ".03@mail.ru", "15");
+        PersonDataEntity user1 = new PersonDataEntity(1001L, "Pisarev", "Dmitrii", LocalDate.of(2003, 1, 1), "d.pisarev" + ".03@mail.ru", "1234");
+        PersonDataEntity user2 = new PersonDataEntity(1002L, "Pisarev1", "Dmitrii", LocalDate.of(2003, 1, 1), "d1.pisarev" + ".03@mail.ru", "12");
+        PersonDataEntity user3 = new PersonDataEntity(1003L, "Pisarev2", "Dmitrii", LocalDate.of(2003, 1, 1), "d2.pisarev" + ".03@mail.ru", "13");
+        PersonDataEntity user4 = new PersonDataEntity(1004L, "Pisarev3", "Dmitrii", LocalDate.of(2003, 1, 1), "d3.pisarev" + ".03@mail.ru", "14");
+        PersonDataEntity user5 = new PersonDataEntity(1005L, "Pisarev4", "Dmitrii", LocalDate.of(2003, 1, 1), "d4.pisarev" + ".03@mail.ru", "15");
 
         user1.setRoles(allAccess);
         user2.setRoles(userAccess);
