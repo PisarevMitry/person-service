@@ -16,7 +16,9 @@ public class Init {
 
     private final PersonDataServiceImpl personDataService;
 
-    public Init(PersonDataServiceImpl personDataService) {this.personDataService = personDataService;}
+    public Init(PersonDataServiceImpl personDataService) {
+        this.personDataService = personDataService;
+    }
 
     @PostConstruct
     public void init() {
@@ -31,12 +33,6 @@ public class Init {
         allAccess.add(user);
 
         userAccess.add(user);
-
-        personDataService.deleteById(1001L);
-        personDataService.deleteById(1002L);
-        personDataService.deleteById(1003L);
-        personDataService.deleteById(1004L);
-        personDataService.deleteById(1005L);
 
         PersonDataEntity user1 = new PersonDataEntity(1001L, "Pisarev", "Dmitrii", LocalDate.of(2003, 1, 1), "d.pisarev" + ".03@mail.ru", "1234");
         PersonDataEntity user2 = new PersonDataEntity(1002L, "Pisarev1", "Dmitrii", LocalDate.of(2003, 1, 1), "d1.pisarev" + ".03@mail.ru", "12");

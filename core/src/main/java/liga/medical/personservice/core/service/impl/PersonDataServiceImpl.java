@@ -64,10 +64,8 @@ public class PersonDataServiceImpl implements PersonDataService {
     @Override
     public void insert(PersonDataDto personDataDto) {
         PersonDataEntity personData = modelMapper.map(personDataDto, PersonDataEntity.class);
-        if (personData.getId() == null)
-            repository.insert(personData);
-        else
-            repository.updateById(personData);
+        if (personData.getId() == null) repository.insert(personData);
+        else repository.updateById(personData);
     }
 
     public void insertUser(PersonDataEntity personDataEntity) {
@@ -85,8 +83,14 @@ public class PersonDataServiceImpl implements PersonDataService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        PersonDataEntity personData = findByEmail(email);
-        return personData;
+        return findByEmail(email);
     }
 
+    public PasswordEncoder getPasswordEncoder() {
+        return passwordEncoder;
+    }
+
+    public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
+    }
 }

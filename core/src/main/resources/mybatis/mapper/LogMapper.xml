@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="liga.medical.personservice.core.repository.LogRepository">
 
-    <resultMap id="LogEntity" type="liga.medical.personservice.core.model.logging.LogEntity" autoMapping="true">
+    <resultMap id="LogEntity" type="liga.medical.personservice.core.model.LogEntity" autoMapping="true">
         <id property="id" column="id" jdbcType="BIGINT"/>
     </resultMap>
 

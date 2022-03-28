@@ -2,8 +2,8 @@ package liga.medical.personservice.core.logging;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import liga.medical.personservice.core.model.LogEntity;
 import liga.medical.personservice.core.model.PersonDataEntity;
-import liga.medical.personservice.core.model.logging.LogEntity;
 import liga.medical.personservice.core.repository.LogRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -25,10 +25,12 @@ public class LoggingAspect {
     LogRepository logRepository;
 
     @Pointcut("within (liga.medical.personservice.core.controller.LoginController)")
-    public void loginController() {}
+    public void loginController() {
+    }
 
     @Pointcut("within(@org.springframework.web.bind.annotation.RestController *)")
-    public void restController() {}
+    public void restController() {
+    }
 
     @Around("loginController()")
     public Object loginControllerLogger(ProceedingJoinPoint pjp) throws JsonProcessingException {
@@ -41,7 +43,10 @@ public class LoggingAspect {
         Object[] array = pjp.getArgs();
 
         LogEntity logEntityBefore = new LogEntity(LocalDateTime.now(), methodName, className, personDataEntity.getUsername());
-        log.info(logEntityBefore.getCreateDttm() + " Начата авторизация: " + logEntityBefore.getClassName() + ":" + logEntityBefore.getMethodName() + " ()" + " с аргументами" + mapper.writeValueAsString(array) + logEntityBefore.getUserName());
+        log.info(
+                logEntityBefore.getCreateDttm() + " Начата авторизация: " + logEntityBefore.getClassName() + ":" +
+                        logEntityBefore.getMethodName() + " ()" + " с аргументами" + mapper.writeValueAsString(
+                        array) + logEntityBefore.getUserName());
         logRepository.insert(logEntityBefore);
 
         Object object = null;
@@ -52,7 +57,10 @@ public class LoggingAspect {
         }
 
         LogEntity logEntityAfter = new LogEntity(LocalDateTime.now(), methodName, className, personDataEntity.getUsername());
-        log.info(logEntityAfter.getCreateDttm() + " Закончена авторизация: " + logEntityAfter.getClassName() + ":" + logEntityAfter.getMethodName() + " ()" + " с аргументами" + mapper.writeValueAsString(array) + logEntityAfter.getUserName());
+        log.info(
+                logEntityAfter.getCreateDttm() + " Закончена авторизация: " + logEntityAfter.getClassName() + ":" +
+                        logEntityAfter.getMethodName() + " ()" + " с аргументами" + mapper.writeValueAsString(
+                        array) + logEntityAfter.getUserName());
         logRepository.insert(logEntityAfter);
 
         return object;
@@ -69,7 +77,10 @@ public class LoggingAspect {
         Object[] array = pjp.getArgs();
 
         LogEntity logEntityBefore = new LogEntity(LocalDateTime.now(), methodName, className, personDataEntity.getUsername());
-        log.info(logEntityBefore.getCreateDttm() + " Вызван метод контроллера: " + logEntityBefore.getClassName() + "." + logEntityBefore.getMethodName() + " ()" + " с аргументами" + mapper.writeValueAsString(array) + logEntityBefore.getUserName());
+        log.info(
+                logEntityBefore.getCreateDttm() + " Вызван метод контроллера: " + logEntityBefore.getClassName() + "." +
+                        logEntityBefore.getMethodName() + " ()" + " с аргументами" + mapper.writeValueAsString(
+                        array) + logEntityBefore.getUserName());
         logRepository.insert(logEntityBefore);
 
         Object object = null;
@@ -80,7 +91,10 @@ public class LoggingAspect {
         }
 
         LogEntity logEntityAfter = new LogEntity(LocalDateTime.now(), methodName, className, personDataEntity.getUsername());
-        log.info(logEntityAfter.getCreateDttm() + " Завершен метод контроллера: " + logEntityAfter.getClassName() + "." + logEntityAfter.getMethodName() + " ()" + " с аргументами" + mapper.writeValueAsString(array) + logEntityAfter.getUserName());
+        log.info(
+                logEntityAfter.getCreateDttm() + " Завершен метод контроллера: " + logEntityAfter.getClassName() + "." +
+                        logEntityAfter.getMethodName() + " ()" + " с аргументами" + mapper.writeValueAsString(
+                        array) + logEntityAfter.getUserName());
         logRepository.insert(logEntityAfter);
 
         return object;

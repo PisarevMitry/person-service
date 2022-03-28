@@ -1,4 +1,4 @@
-package liga.medical.personservice.core.model.logging;
+package liga.medical.personservice.core.model;
 
 import lombok.Data;
 

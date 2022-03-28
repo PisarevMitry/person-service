@@ -1,6 +1,6 @@
 package liga.medical.personservice.core.repository;
 
-import liga.medical.personservice.core.model.logging.LogEntity;
+import liga.medical.personservice.core.model.LogEntity;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.web.bind.annotation.RequestBody;

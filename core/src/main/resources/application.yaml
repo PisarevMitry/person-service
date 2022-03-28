@@ -13,7 +13,6 @@ spring:
     type: com.zaxxer.hikari.HikariDataSource
 
     hikari:
-
       maximum-pool-size: 10
       # Настройка тайм-аута соединения = 2мин
       connection-timeout: 120000

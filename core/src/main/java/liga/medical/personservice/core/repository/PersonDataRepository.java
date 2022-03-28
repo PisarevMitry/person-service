@@ -18,12 +18,14 @@ public interface PersonDataRepository {
     @Select("select * from person_data where id = #{personDataId}")
     PersonDataEntity findById(Long personDataId);
 
-    @Insert("insert into person_data (id, last_name, first_name, birth_dt, age, sex, contact_id, medical_card_id) " + "values(#{lastName}, #{first_name}, #{birthDt}, #{age}, #{sex}, #{contact_id}, #{medical_card_id})")
+    @Insert("insert into person_data (id, last_name, first_name, birth_dt, age, sex, contact_id, medical_card_id) " +
+            "values(#{lastName}, #{first_name}, #{birthDt}, #{age}, #{sex}, #{contact_id}, #{medical_card_id})")
     @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
     int insert(PersonDataEntity personDataEntity);
 
-    @Insert("insert into person_data (id, last_name, first_name, birth_dt, email, password)" + "values( #{id}, #{lastName}, #{firstName}, #{birthDt}, " + "#{email}, #{password})")
-    int insertUser(PersonDataEntity personDataEntity);
+    @Insert("insert into person_data (id, last_name, first_name, birth_dt, email, password)" +
+            "values( #{id}, #{lastName}, #{firstName}, #{birthDt}, #{email}, #{password})")
+    void insertUser(PersonDataEntity personDataEntity);
 
     List<PersonDataEntity> findByListId(@Param("personDataListId") List<Long> personDataListId);
 
