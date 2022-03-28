@@ -18,7 +18,8 @@ public interface MedicalCardRepository {
     @Select("select * from medical_card where id = #{cardId}")
     MedicalCardEntity findById(Long medicalCardId);
 
-    @Insert("insert into medical_card (client_status, med_status, registry_dt, comment) " +
+    @Insert("insert into medical_card (id, client_status, " +
+            "med_status, registry_dt, comment) " +
             "values(#{clientStatus}, #{medStatus}, #{registryDt}, #{comment})")
     @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
     int insert(MedicalCardEntity medicalCardEntity);

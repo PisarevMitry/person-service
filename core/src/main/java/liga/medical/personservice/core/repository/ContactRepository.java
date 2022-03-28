@@ -18,7 +18,7 @@ public interface ContactRepository {
     @Select("select * from contact where id = #{contactId}")
     ContactEntity findById(Long contactId);
 
-    @Insert("insert into contact (phone_number, email, profile_link)" +
+    @Insert("insert into contact (id, phone_number, email, profile_link)" +
             "values(#{phoneNumber}, #{email}, #{profileLink})")
     @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
     int insert(ContactEntity contactEntity);

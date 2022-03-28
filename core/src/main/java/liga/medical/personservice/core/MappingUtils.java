@@ -1,11 +1,10 @@
 package liga.medical.personservice.core;
 
 import org.modelmapper.ModelMapper;
+import org.modelmapper.config.Configuration;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
-
-import static org.modelmapper.config.Configuration.AccessLevel.PRIVATE;
 
 @Component
 public class MappingUtils {
@@ -17,7 +16,7 @@ public class MappingUtils {
                 .setMatchingStrategy(MatchingStrategies.STRICT)
                 .setFieldMatchingEnabled(true)
                 .setSkipNullEnabled(true)
-                .setFieldAccessLevel(PRIVATE);
+                .setFieldAccessLevel(Configuration.AccessLevel.PRIVATE);
         return mapper;
     }
 }

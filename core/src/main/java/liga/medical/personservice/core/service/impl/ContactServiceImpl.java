@@ -5,7 +5,6 @@ import liga.medical.personservice.core.repository.ContactRepository;
 import liga.medical.personservice.core.service.ContactService;
 import liga.medical.personservice.dto.ContactDto;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,7 +17,8 @@ public class ContactServiceImpl implements ContactService {
 
     private final ModelMapper modelMapper;
 
-    public ContactServiceImpl(ContactRepository repository, ModelMapper modelMapper) {this.repository = repository;
+    public ContactServiceImpl(ContactRepository repository, ModelMapper modelMapper) {
+        this.repository = repository;
         this.modelMapper = modelMapper;
     }
 

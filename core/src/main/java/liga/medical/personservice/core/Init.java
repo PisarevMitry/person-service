@@ -6,6 +6,7 @@ import liga.medical.personservice.core.service.impl.PersonDataServiceImpl;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
@@ -31,6 +32,12 @@ public class Init {
 
         userAccess.add(user);
 
+        personDataService.deleteById(1001L);
+        personDataService.deleteById(1002L);
+        personDataService.deleteById(1003L);
+        personDataService.deleteById(1004L);
+        personDataService.deleteById(1005L);
+
         PersonDataEntity user1 = new PersonDataEntity(1001L, "Pisarev", "Dmitrii", LocalDate.of(2003, 1, 1), "d.pisarev" + ".03@mail.ru", "1234");
         PersonDataEntity user2 = new PersonDataEntity(1002L, "Pisarev1", "Dmitrii", LocalDate.of(2003, 1, 1), "d1.pisarev" + ".03@mail.ru", "12");
         PersonDataEntity user3 = new PersonDataEntity(1003L, "Pisarev2", "Dmitrii", LocalDate.of(2003, 1, 1), "d2.pisarev" + ".03@mail.ru", "13");
@@ -47,5 +54,14 @@ public class Init {
         personDataService.insertUser(user3);
         personDataService.insertUser(user4);
         personDataService.insertUser(user5);
+    }
+
+    @PreDestroy
+    void destroy() {
+        personDataService.deleteById(1001L);
+        personDataService.deleteById(1002L);
+        personDataService.deleteById(1003L);
+        personDataService.deleteById(1004L);
+        personDataService.deleteById(1005L);
     }
 }

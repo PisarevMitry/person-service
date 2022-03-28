@@ -5,7 +5,6 @@ import liga.medical.personservice.core.repository.MedicalCardRepository;
 import liga.medical.personservice.core.service.MedicalCardService;
 import liga.medical.personservice.dto.MedicalCardDto;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

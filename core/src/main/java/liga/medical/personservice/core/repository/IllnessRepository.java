@@ -18,7 +18,7 @@ public interface IllnessRepository {
     @Select("select * from illness where id = #{illnessId}")
     IllnessEntity findById(Long illnessId);
 
-    @Insert("insert into illness (medical_card_id, type_id, heaviness, appearance_dttm, recovery_dt)" +
+    @Insert("insert into illness (id, medical_card_id, type_id, heaviness, appearance_dttm, recovery_dt)" +
             "values (#{medicalCardId}, #{typeId}, #{heaviness}, #{appearanceDttm}, #{recoveryDt})")
     @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
     int insert(IllnessEntity illnessEntity);

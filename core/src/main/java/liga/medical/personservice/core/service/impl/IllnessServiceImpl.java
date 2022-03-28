@@ -5,7 +5,6 @@ import liga.medical.personservice.core.repository.IllnessRepository;
 import liga.medical.personservice.core.service.IllnessService;
 import liga.medical.personservice.dto.IllnessDto;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,7 +17,8 @@ public class IllnessServiceImpl implements IllnessService {
 
     private final ModelMapper modelMapper;
 
-    public IllnessServiceImpl(IllnessRepository repository, ModelMapper modelMapper) {this.repository = repository;
+    public IllnessServiceImpl(IllnessRepository repository, ModelMapper modelMapper) {
+        this.repository = repository;
         this.modelMapper = modelMapper;
     }
 

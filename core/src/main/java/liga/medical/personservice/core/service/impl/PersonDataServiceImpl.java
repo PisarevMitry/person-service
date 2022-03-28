@@ -5,7 +5,6 @@ import liga.medical.personservice.core.repository.PersonDataRepository;
 import liga.medical.personservice.core.service.PersonDataService;
 import liga.medical.personservice.dto.PersonDataDto;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -25,7 +24,6 @@ public class PersonDataServiceImpl implements PersonDataService {
     private final ModelMapper modelMapper;
 
     private PasswordEncoder passwordEncoder;
-
 
     public PersonDataServiceImpl(PersonDataRepository repository, ModelMapper modelMapper) {
         this.repository = repository;

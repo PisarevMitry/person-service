@@ -20,7 +20,7 @@ public interface AddressRepository {
 
     List<AddressEntity> findByListId(@Param("addressListId") List<Long> addressListId);
 
-    @Insert("insert into address (contact_id, country_id, city, index, street, building, flat)" + "values (#{contactId}, #{countryId}, #{city}, #{index}, #{street}, #{building}, #{flat})")
+    @Insert("insert into address (id, contact_id, country_id, city, index, street, building, flat)" + "values (#{contactId}, #{countryId}, #{city}, #{index}, #{street}, #{building}, #{flat})")
     @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
     int insert(AddressEntity addressEntity);
 

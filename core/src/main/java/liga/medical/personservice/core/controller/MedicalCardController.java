@@ -1,7 +1,6 @@
 package liga.medical.personservice.core.controller;
 
 import liga.medical.personservice.core.service.MedicalCardService;
-import liga.medical.personservice.dto.IllnessDto;
 import liga.medical.personservice.dto.MedicalCardDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;

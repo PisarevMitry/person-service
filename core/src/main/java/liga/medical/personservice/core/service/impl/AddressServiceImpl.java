@@ -5,7 +5,6 @@ import liga.medical.personservice.core.repository.AddressRepository;
 import liga.medical.personservice.core.service.AddressService;
 import liga.medical.personservice.dto.AddressDto;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,7 +17,8 @@ public class AddressServiceImpl implements AddressService {
 
     private final ModelMapper modelMapper;
 
-    public AddressServiceImpl(AddressRepository repository, ModelMapper modelMapper) {this.repository = repository;
+    public AddressServiceImpl(AddressRepository repository, ModelMapper modelMapper) {
+        this.repository = repository;
         this.modelMapper = modelMapper;
     }
 
